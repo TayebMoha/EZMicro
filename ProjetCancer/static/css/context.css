@@ -1,0 +1,127 @@
+/* Design Global */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+header {
+    background-color: #1f2937;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #facc15;
+    height: 60px; /* Hauteur fixe */
+    line-height: 120px; /* Centrer verticalement le texte */
+}
+
+header h1 {
+    font-size: 2.5rem; /* Taille fixe pour le titre */
+    margin-top: -30px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background-color: #374151;
+    padding: 1.2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    color: #facc15;
+    transform: scale(1.1);
+}
+
+.container p {
+
+        font-size: 1rem;
+        color: #333;
+        line-height: 1.8;
+
+}
+
+.container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2rem 3rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    position: relative;
+    padding-left: 20px;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 30px;
+    background-color: #facc15;
+}
+
+section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+/* Mise à jour pour les listes */
+ul, ol {
+    margin-left: 2rem;
+    line-height: 1.6;
+    font-size: 1rem;  /* Taille de texte réduite */
+    padding-left: 0;  /* Enlève le padding supplémentaire par défaut */
+}
+
+ul li, ol li {
+    margin-bottom: 1rem;
+    list-style-position: outside; /* Positionner les puces en dehors des éléments */
+}
+
+footer {
+    text-align: center;
+    background-color: #1f2937;
+    color: white;
+    padding: 1.5rem;
+    margin-top: 4rem;
+    font-size: 1rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer a {
+    color: #facc15;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: Example Web App API
+  version: 1.0.0
+servers:
+- url: http://localhost:8000
+paths:
+  /:
+    get:
+      operationId: read_root
+      responses:
+        "200":
+          content:
+            text/html; charset=utf-8:
+              schema:
+                type: string
+          description: Index page
+      summary: Return the index HTML page
+  /page1:
+    get:
+      operationId: read_page1
+      responses:
+        "200":
+          content:
+            text/html; charset=utf-8:
+              schema:
+                type: string
+          description: Page1 with square result
+      summary: Return page1 HTML with square(4) result
+  /page2:
+    get:
+      operationId: read_page2
+      responses:
+        "200":
+          content:
+            text/html; charset=utf-8:
+              schema:
+                type: string
+          description: Page2 with cube result
+      summary: Return page2 HTML with cube(2) result
+  /page3:
+    get:
+      operationId: read_page3
+      responses:
+        "200":
+          content:
+            text/html; charset=utf-8:
+              schema:
+                type: string
+          description: Page3 with combined calculation result
+      summary: "Return page3 HTML with combined result of add_five, cube, and square"
+components:
+  schemas: {}

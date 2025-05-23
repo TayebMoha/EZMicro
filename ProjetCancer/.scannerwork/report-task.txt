@@ -1,0 +1,6 @@
+projectKey=ProjetCancer-original
+serverUrl=http://localhost:9000
+serverVersion=25.5.0.107428
+dashboardUrl=http://localhost:9000/dashboard?id=ProjetCancer-original
+ceTaskId=1f4e00da-fae5-42f6-be6c-18a432168425
+ceTaskUrl=http://localhost:9000/api/ce/task?id=1f4e00da-fae5-42f6-be6c-18a432168425

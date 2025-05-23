@@ -1,0 +1,17 @@
+{
+  version: 3.8,
+  services: {
+    user_management_and_ui: {
+      build: ./user_management_and_ui,
+      ports: [
+        8000:8000
+      ]
+    },
+    math_functions: {
+      build: ./math_functions,
+      ports: [
+        8001:8000
+      ]
+    }
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos</title>
+  <link rel="stylesheet" href="/static/css/ml_model.css">
+</head>
+<body>
+  <header>
+    <h1>Prediction Model</h1> <!-- Fermeture correcte du h1 -->
+  </header>
+  <nav>
+    <a href="/">Accueil</a>
+    <a href="/ml-model">Modèle ML</a>
+    <a href="/dashboard">Dashboard</a>
+  </nav>
+    <div class="container">
+        <h2>Entrez les informations du patient</h2>
+        <form id="prediction-form">
+            <label>Âge:</label>
+            <input type="number" id="age" required min="0"><br>
+
+            <label>Sexe:</label>
+            <select id="sex">
+                <option value="Male">Homme</option>
+                <option value="Female">Femme</option>
+            </select><br>
+
+            <label>Type de Cancer:</label>
+            <select id="cancer-type">
+                {% for cancer in cancer_types %}
+                    <option value="{{ cancer }}">{{ cancer }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label>Ethnie:</label>
+            <select id="race">
+                {% for race in races %}
+                    <option value="{{ race }}">{{ race }}</option>
+                {% endfor %}
+            </select><br>
+
+            <button type="submit">Prédire</button>
+        </form>
+
+        <h3>Résultat:</h3>
+        <div class="result" id="prediction-result">Aucune prédiction effectuée</div>
+    </div>
+
+    <script>
+    document.getElementById("prediction-form").addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const age = document.getElementById("age").value;
+        const sex = document.getElementById("sex").value;
+        const cancerType = document.getElementById("cancer-type").value;
+        const race = document.getElementById("race").value;
+
+        const response = await fetch("/predict/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ Age: age, Sex: sex, CancerType: cancerType, Race: race })
+        });
+
+        const data = await response.json();
+        document.getElementById("prediction-result").innerHTML =
+          `<b>Chance d'être en vie:</b> ${data.Probability_Alive}%<br>
+           <b>Chance de décès:</b> ${data.Probability_Dead}%`;
+    });
+    </script>
+
+    <footer>
+        © 2025 Projet Data Viz | Tous droits réservés
+    </footer>
+</body>
+</html>

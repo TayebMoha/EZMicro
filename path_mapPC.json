@@ -1,0 +1,6 @@
+{
+  "HomepageService": ["/"],
+  "DashboardService": ["/dashboard"],
+  "PredictionService": ["/ml-model", "/predict/"]
+}
+

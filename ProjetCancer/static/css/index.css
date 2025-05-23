@@ -1,0 +1,176 @@
+/* Design Global */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #1f2937;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #facc15;
+    height: 60px; /* Hauteur fixe */
+    line-height: 120px; /* Centrer verticalement le texte */
+}
+
+header h1 {
+    font-size: 2.5rem; /* Taille fixe pour le titre */
+    margin-top: -30px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background-color: #374151;
+    padding: 1.2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    color: #facc15;
+    transform: scale(1.1);
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.8;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    max-width: 900px;  /* Limite la largeur pour une meilleure lisibilité */
+    margin-left: auto;  /* Centrage automatique */
+    margin-right: auto;  /* Centrage automatique */
+}
+
+.welcome {
+    font-size: 1.4rem;  /* Taille plus grande pour le "Bienvenue" */
+    font-weight: 600;  /* Mise en gras */
+    color: #eabb02;  /* Couleur dorée pour le rendre distinct */
+    text-transform: uppercase;  /* Optionnel : Met en majuscules */
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2rem 3rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    position: relative;
+    padding-left: 20px;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 30px;
+    background-color: #facc15;
+}
+
+.chart-container {
+    margin-bottom: 2rem;
+}
+
+.chart-container h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #4b5563;
+}
+
+.story {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f3f4f6;
+    border-left: 4px solid #1f2937;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    background-color: #1f2937;
+    color: white;
+    padding: 1.5rem;
+    margin-top: 4rem;
+    font-size: 1rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer a {
+    color: #facc15;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.arrow {
+    width: 30px;
+    height: 30px;
+    border-left: 4px solid #facc15;
+    border-bottom: 4px solid #facc15;
+    transform: rotate(315deg);  /* Flèche orientée vers le bas */
+    animation: bounce 1.5s infinite;
+}
+
+/* Animation pour faire rebondir la flèche */
+@keyframes bounce {
+    0% {
+        transform: translateY(0) rotate(315deg); /* Flèche orientée vers le bas */
+    }
+    50% {
+        transform: translateY(10px) rotate(315deg);
+    }
+    100% {
+        transform: translateY(0) rotate(315deg);
+    }
+}
+
+

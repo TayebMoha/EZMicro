@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  homepageservice:
+    build: ./servicesapproche4/HomepageService
+    networks:
+      - appnet
+  page1service:
+    build: ./servicesapproche4/Page1Service
+    networks:
+      - appnet
+  page2service:
+    build: ./servicesapproche4/Page2Service
+    networks:
+      - appnet
+  page3service:
+    build: ./servicesapproche4/Page3Service
+    networks:
+      - appnet
+  gateway:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./gateway_conf/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - homepageservice
+      - page1service
+      - page2service
+      - page3service
+    networks:
+      - appnet
+networks:
+  appnet:

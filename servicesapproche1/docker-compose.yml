@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  microservice_1:
+    build: ./microservice_1
+    ports:
+      - '8000:8000'
+  microservice_2:
+    build: ./microservice_2
+    ports:
+      - '8001:8000'
+  microservice_0:
+    build: ./microservice_0
+    ports:
+      - '8002:8000'
+networks:
+  default:
+    driver: bridge

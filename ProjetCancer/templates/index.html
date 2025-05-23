@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard des Cancers</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/index.css">
+
+    
+</head>
+<body>
+<header>
+    <h1>Dashboard des Cancers</h1>
+</header>
+<nav>
+    <a href="/">Accueil</a>
+    <a href="/ml-model">Modèle ML</a>
+    <a href="/dashboard">Dashboard</a>
+</nav>
+
+<div class="container">
+    <p class="intro-text">
+        <span class="welcome">Bienvenue sur notre tableau de bord des données sur le cancer</span> 
+        <br> Explorez ici des statistiques (2008-2021) détaillées sur différents types de cancers, en fonction de critères tels que l’âge, le sexe, l’année de diagnostic, et bien plus encore. Grâce aux graphiques interactifs ci-dessous, vous pourrez approfondir votre compréhension des tendances et des facteurs clés liés à ces pathologies.
+    </p>
+</div>
+
+<div class="arrow-container">
+    <span class="arrow"></span>
+</div>
+
+<div class="container">
+    
+    <!-- Répartition des cancers par groupe d'âge -->
+    <section class="chart-container">
+        <h2>Répartition des cancers par groupe d'âge</h2>
+        <div id="age-chart"></div>
+        <div class="story">
+            <p>
+                Ce graphique illustre la distribution des cas de cancer en fonction des groupes d’âge et du sexe des patients 
+                (hommes en bleu, femmes en orange). Il met en évidence des tendances claires qui peuvent être interprétées sous plusieurs angles.
+            </p>
+    
+            <h3>Distribution générale et augmentation avec l’âge</h3>
+            <p>
+                On observe une augmentation du nombre de cas de cancer avec l'âge, atteignant un pic dans le groupe 61-70 ans, avant de diminuer progressivement. 
+                Cette tendance est cohérente avec les connaissances médicales :
+            </p>
+            <ul>
+                <li>Le risque de développer un cancer augmente avec l’âge en raison de l’accumulation de mutations génétiques et de l’affaiblissement des mécanismes de réparation de l’ADN.</li>
+                <li>L’exposition prolongée aux facteurs de risque (tabac, alimentation, pollution, etc.) peut également expliquer cette hausse avec le vieillissement.</li>
+                <li>Après 70 ans, la baisse du nombre de cas peut être due à la diminution de la population à risque, car certaines personnes n’atteignent pas ces âges élevés.</li>
+            </ul>
+    
+            <h3>Différences entre hommes et femmes</h3>
+            <p>
+                Jusqu'à 40 ans, les cas sont relativement rares et les différences entre hommes et femmes sont minimes.
+                À partir de 40 ans, la proportion de femmes touchées devient plus importante que celle des hommes, notamment dans le groupe 41-50 ans.
+                Cela pourrait être lié aux cancers hormonodépendants comme le cancer du sein, qui est le plus fréquent chez les femmes.
+            </p>
+            <p>
+                Après 50 ans, les hommes dépassent progressivement les femmes en nombre de cas, notamment entre 61-70 ans où l’écart est le plus marqué. 
+                Cette tendance peut s’expliquer par une prévalence plus élevée de cancers liés au tabagisme, à l’alcoolisme et à des expositions professionnelles 
+                chez les hommes (cancer du poumon, cancer colorectal, prostate, etc.).
+            </p>
+            <p>
+                Entre 71-80 ans, l’écart se réduit, ce qui pourrait être dû à un équilibre entre les types de cancers touchant les deux sexes.
+            </p>
+    
+            <h3>Hypothèses et explications possibles</h3>
+            <ul>
+                <li><strong>Facteurs de risque différenciés :</strong> Les comportements de santé influencent la répartition des cancers. Historiquement, le tabagisme et l’alcoolisme étaient plus répandus chez les hommes, mais ces tendances évoluent, ce qui pourrait expliquer pourquoi les écarts se réduisent progressivement dans certaines tranches d’âge.</li>
+                <li><strong>Dépistage et prise en charge :</strong> Les femmes ont généralement un suivi médical plus fréquent (mammographies, examens gynécologiques), ce qui peut conduire à un diagnostic plus précoce, tandis que les hommes consultent souvent plus tardivement.</li>
+                <li><strong>Espérance de vie et biais de population :</strong> Les femmes vivant en moyenne plus longtemps que les hommes, cela pourrait expliquer pourquoi la répartition semble plus équilibrée après 80 ans.</li>
+            </ul>
+    
+            <h3>Conclusion</h3>
+            <p>
+                Ce graphique met en lumière l'importance du dépistage précoce et des campagnes de prévention adaptées aux différents groupes d’âge et aux spécificités des sexes.
+                Il souligne également la nécessité d’examiner les facteurs de risque spécifiques pour mieux comprendre et anticiper les tendances épidémiologiques du cancer.
+            </p>
+        </div>
+    </section>
+    
+</div>
+<div class="container">
+
+    <!-- Répartition des types de cancer par groupe d'âge -->
+    <section class="chart-container">
+        <h2>Répartition des types de cancer par groupe d'âge</h2>
+        <div id="cancer-age-chart"></div>
+        <div class="story">
+            <p>
+                Ce second graphique apporte un nouvel éclairage sur la répartition des cancers en détaillant les types de cancer
+                prédominants selon les groupes d’âge. Il permet d’établir des liens intéressants avec la précédente analyse sur la
+                répartition des cancers selon le sexe et l’âge.
+            </p>
+        
+            <h3>Confirmation des tendances générales</h3>
+            <p>
+                Comme observé précédemment, le nombre de cas de cancer augmente fortement avec l’âge, atteignant un maximum entre
+                61 et 70 ans avant de décliner progressivement. Cela confirme que l’âge est un facteur de risque majeur dans le
+                développement des cancers, avec une accumulation progressive des mutations et une exposition prolongée aux
+                facteurs environnementaux.
+            </p>
+        
+            <h3>Différences entre les types de cancers et leur répartition</h3>
+            <ul>
+                <li><strong>Le cancer du sein</strong> (en marron) est un des plus fréquents, notamment entre 41 et 80 ans, ce qui corrobore
+                    l'idée que les femmes sont davantage touchées à ces âges.</li>
+                <li><strong>Le cancer de la prostate</strong> (en violet) devient dominant après 60 ans, expliquant en partie pourquoi les
+                    hommes prennent progressivement le dessus en nombre de cas dans les tranches d’âge supérieures.</li>
+                <li><strong>Les cancers du poumon</strong> (rouge) et <strong>colorectal</strong> (bleu) sont présents dans toutes les tranches d’âge adultes,
+                    mais leur prévalence augmente nettement après 50 ans, renforçant l’idée que le tabac, l’alcool et les
+                    habitudes alimentaires jouent un rôle clé.</li>
+            </ul>
+        
+            <h3>Un lien avec les comportements et le dépistage</h3>
+            <p>
+                L’analyse précédente suggérait que les femmes étaient plus nombreuses à être diagnostiquées entre 41-50 ans, ce qui
+                pourrait être lié à une prise en charge plus précoce grâce aux programmes de dépistage du cancer du sein. Le présent
+                graphique vient confirmer cette hypothèse en montrant que le cancer du sein est un des plus fréquents dans cette
+                tranche d’âge.
+            </p>
+            <p>
+                De la même manière, la montée en puissance des cancers du poumon et de la prostate à partir de 60 ans pourrait être mise en relation avec des facteurs de risque spécifiques aux hommes, expliquant pourquoi ils deviennent majoritaires dans certaines tranches d’âge avancées. En particulier, le cancer de la prostate devient nettement plus fréquent après cet âge, ce qui est en accord avec les recommandations de dépistage ciblant principalement les hommes de plus de 50 ans. Ce phénomène peut aussi s’expliquer par une prise de conscience accrue et un dépistage plus systématique avec l’âge, contrairement aux cancers plus difficiles à détecter précocement. De plus, les femmes bénéficient souvent d’un suivi médical plus régulier, tandis que les hommes ont tendance à moins se faire dépister, retardant ainsi le diagnostic et augmentant le nombre de cas détectés à des stades plus avancés.
+            </p>
+            
+        
+            <h3>Conclusion</h3>
+            <p>
+                Ce graphique vient donc compléter l'analyse précédente en offrant une vision plus détaillée des types de cancers qui
+                influencent la distribution observée entre les sexes et les âges. Il met en évidence l'importance du dépistage et des
+                campagnes de prévention ciblées, qui doivent être adaptées aux spécificités de chaque type de cancer et de chaque
+                tranche d’âge.
+            </p>
+        </div>
+    </section>
+</div>
+<div class="container">
+    <section class="chart-container">
+        <h2>Âge moyen des patients par année de diagnostic et type de cancer</h2>
+        <div id="diagnosis-age-line-chart"></div>
+        <div class="story">
+            <p>
+                Ce graphique apporte un nouvel éclairage sur l'évolution des cancers en fonction du temps, en mettant en 
+                évidence la moyenne d'âge des patients diagnostiqués pour différents types de cancer entre 2008 et 2022. Il 
+                permet d'approfondir l'analyse en lien avec les graphiques précédents, notamment sur la répartition des 
+                cancers par âge et sexe.
+            </p>
+            
+            <h3>Confirmation des tendances générales</h3>
+            <p>
+                Globalement, l'âge moyen des patients varie selon le type de cancer, mais on constate une certaine 
+                stabilité pour la plupart des cancers dans le temps.
+                Les cancers du pancréas (vert) et des poumons (rouge) sont diagnostiqués à un âge moyen relativement 
+                élevé, autour de 70 ans. Cela confirme leur prévalence chez les personnes âgées, en cohérence avec les 
+                observations précédentes où les cas augmentaient fortement après 60 ans.
+                À l'inverse, les cancers du sein (marron) et du mélanome (orange) concernent en moyenne des patients plus 
+                jeunes, avec une légère augmentation de leur âge moyen sur la période.
+            </p>
+            
+            <h3>Baisse de l'âge moyen pour certains cancers</h3>
+            <p>
+                Le cancer colorectal (bleu) montre une diminution progressive de l'âge moyen des patients diagnostiqués. 
+                Cela pourrait indiquer :
+                <ul>
+                    <li>Une amélioration du dépistage précoce grâce aux campagnes de sensibilisation.</li>
+                    <li>Une augmentation des facteurs de risque (alimentation, sédentarité) touchant des populations plus jeunes.</li>
+    
+                </ul>
+            </p>
+            
+            <h3>Augmentation de l'âge moyen pour certains cancers</h3>
+            <p>
+                Le mélanome (orange) montre une tendance à l’augmentation de l'âge moyen des patients diagnostiqués. 
+                Cela peut être attribué à plusieurs facteurs :
+                <ul>
+                    <li>Un effet retardé des expositions au soleil et aux UV artificiels.</li>
+                    <li>Un vieillissement de la population générale avec une exposition cumulative.</li>
+                    <li>Un meilleur dépistage chez les personnes âgées, alors qu’auparavant ce cancer était plus fréquemment 
+                    détecté chez des patients plus jeunes.</li>
+                </ul>
+                Une tendance similaire est observée pour le cancer du sein (marron), bien que l’augmentation soit plus légère. 
+                Cela peut être lié à des changements dans les stratégies de dépistage et aux évolutions démographiques.
+            </p>
+            
+            <h3>Corrélation avec les analyses précédentes</h3>
+            <p>
+                Ce graphique complète les précédentes observations en mettant en relation l’évolution temporelle des 
+                diagnostics et les tendances par âge et sexe :
+                <ul>
+                    <li>La répartition des cancers par groupe d’âge et sexe montrait une augmentation des cas à partir de 40-50 ans, ce qui se retrouve ici, avec des cancers comme le sein et le colorectal dont l’âge moyen de diagnostic reste inférieur à celui des cancers du poumon ou du pancréas.</li>
+                    <li>La répartition des types de cancer par âge montrait une prédominance du cancer du sein entre 40 et 80 ans, ce qui est cohérent avec la stabilisation de son âge moyen autour de 62-64 ans.</li>
+                    <li>Le cancer de la prostate étant dominant chez les hommes après 60 ans, il est logique de le voir avec un âge moyen de diagnostic autour de 66-67 ans, avec une légère hausse récente.</li>
+                </ul>
+            </p>
+            
+            <h3>Hypothèses et interprétations</h3>
+            <p>
+                <ul>
+                    <li>Facteurs environnementaux et comportementaux : La baisse d’âge moyen pour certains cancers peut être attribuée à une exposition plus précoce aux facteurs de risque (alimentation, sédentarité, tabagisme pour le cancer colorectal).</li>
+                    <li>Amélioration du dépistage : L’âge moyen plus bas du cancer colorectal et de la prostate peut refléter un accès élargi aux tests de dépistage, permettant une détection plus précoce.</li>
+                    <li>Vieillissement de la population : La tendance haussière pour le mélanome et le sein pourrait être influencée par une espérance de vie plus longue et une détection plus fréquente chez les personnes âgées.</li>
+                </ul>
+            </p>
+        </div>
+    </section>
+    
+    
+</div>
+<div class="container">
+
+    <!-- Évolution du nombre de cas par type de cancer (Line Chart) -->
+    <section class="chart-container">
+        <h2>Évolution du nombre de cas par type de cancer et sexe</h2>
+        <div id="line-chart"></div>
+        <div class="story">
+            <p>
+                Ce graphique montre l'évolution du nombre de cas pour chaque type de cancer au fil des années, avec une
+                distinction entre hommes et femmes. Cela permet de visualiser les tendances spécifiques à chaque type de cancer.
+            </p>
+    
+            <h3>Une dynamique différente selon le sexe</h3>
+            <p>
+                On observe une nette différence entre hommes et femmes pour certains cancers. Le cancer du sein, représenté
+                en orange, touche une proportion écrasante de femmes, confirmant son statut de cancer féminin dominant.
+                Son incidence est en augmentation progressive, avec une légère hausse plus marquée en fin de période, 
+                possiblement due à une amélioration du dépistage ainsi qu'à l'influence de facteurs environnementaux et hormonaux.
+            </p>
+            <p>
+                Le cancer de la prostate, propre aux hommes, suit une évolution relativement stable. Cependant, 
+                on remarque une tendance à l'augmentation dans les dernières années, probablement due à l'augmentation
+                de l'espérance de vie et à une sensibilisation accrue au dépistage, qui permet une détection plus précoce.
+            </p>
+    
+            <h3>L'impact des facteurs de risque</h3>
+            <p>
+                Les cancers du poumon et du pancréas présentent une évolution différenciée entre hommes et femmes.
+                Historiquement plus fréquents chez les hommes, on observe une tendance à la hausse chez les femmes.
+                Cette évolution pourrait être en partie due à l'augmentation du tabagisme féminin dans la seconde moitié
+                du XXe siècle, couplée à une exposition accrue à des facteurs de risques environnementaux.
+            </p>
+            
+            <h3>Un dépistage et une prise en charge en évolution</h3>
+            <p>
+                L'augmentation du nombre de cas pour certains cancers peut être en partie attribuée à une amélioration des
+                méthodes de dépistage et à une détection plus précoce. Les progrès technologiques et les campagnes
+                de sensibilisation jouent un rôle crucial, notamment pour les cancers du sein et colorectal.
+            </p>
+            <p>
+                Dans le cas du cancer de la prostate, les tests sanguins (PSA) sont devenus plus courants, menant à un
+                diagnostic plus fréquent, même à des stades précoces. En revanche, pour certains cancers agressifs
+                comme le pancréas, le dépistage reste complexe, pouvant expliquer le faible nombre de cas.
+            </p>
+            
+            <h3>Conclusion</h3>
+            <p>
+                Ce graphique illustre les variations d'incidence des cancers selon le sexe et permet de mieux comprendre 
+                l'influence des modes de vie et des stratégies de dépistage sur leur évolution. Il met en lumière 
+                l'importance de politiques de prévention adaptées à chaque type de cancer, en particulier dans un contexte
+                où les habitudes de vie et l'espérance de vie continuent d'évoluer.
+            </p>
+        </div>
+    </section>
+    
+</div>
+<div class="container">
+    <section class="chart-container">
+        <h2>Répartition par ethnie et type de cancer</h2>
+        <div>
+            <select id="ethnicity-dropdown" style="margin-bottom: 20px; padding: 10px; font-size: 16px;">
+            </select>
+        </div>
+        <div id="ethnicity-pie-chart"></div>
+        <div class="story">
+            <p>
+                Ce graphique montre la répartition des types de cancer selon les différentes ethnies.
+                Cela permet de comprendre les types de cancer qui prédominent dans chaque groupe ethnique.
+            </p>
+    
+            <h3>Prévalence du cancer du sein chez les populations asiatiques</h3>
+            <p>
+                Le cancer du sein est très présent chez les populations asiatiques,
+                en proportion même plus élevée que dans d'autres groupes ethniques. Cela peut être lié à une meilleure
+                sensibilisation au dépistage, une génétique prédisposante ou des facteurs environnementaux spécifiques.
+            </p>
+    
+            <h3>Le cancer de la prostate chez les hommes noirs</h3>
+            <p>
+                Comme le montrent les données, le cancer de la prostate est nettement plus prévalent chez les hommes noirs.
+                Cela peut s'expliquer par des facteurs génétiques qui influencent la croissance cellulaire, mais aussi par
+                des différences d'accès au dépistage et aux soins préventifs.
+            </p>
+    
+            <h3>Une faible prévalence du mélanome chez les populations asiatiques et noires</h3>
+            <p>
+                Le mélanome est particulièrement rare chez les populations asiatiques et noires. Cette tendance s'explique
+                principalement par la différence de pigmentation de la peau. Les personnes à la peau plus foncée possèdent une concentration plus élevée de mélanine, ce qui leur offre une
+                protection accrue contre les effets des rayons UV. Chez les populations asiatiques, bien que la peau soit
+                souvent plus claire, elle contient tout de même plus de protection naturelle par rapport aux populations
+                blanches, réduisant ainsi les risques de développement du mélanome.
+            </p>
+            
+            <h3>Une répartition relativement équilibrée pour les cancers du poumon et colorectal</h3>
+            <p>
+                Les cancers du poumon et colorectal montrent une distribution relativement homogène entre les groupes ethniques.
+                Bien que de légères variations existent, aucun groupe ne se démarque significativement pour ces cancers,
+                suggérant que des facteurs environnementaux et comportementaux communs pourraient jouer un rôle majeur dans
+                leur incidence.
+            </p>
+    
+            <h3>Conclusion</h3>
+            <p>
+                Cette analyse met en lumière les différences de répartition des cancers entre les groupes ethniques.
+                Toutefois, aucun cancer ne se démarque de manière absolue entre les groupes ethniques, et la répartition
+                observée reste relativement homogène. Les variations observées peuvent être attribuées à des facteurs génétiques,
+                environnementaux et sociétaux, mais elles soulignent surtout l'importance d'un accès équitable au dépistage
+                et aux soins de santé pour toutes les populations.
+            </p>
+        </div>
+    </section>
+    
+</div>
+<div class="container">
+    <section class="chart-container">
+        <h2>Répartition du statut vital ou cause de décès par type de cancer</h2>
+        <div>
+            <select id="cancer-type-dropdown" style="margin-bottom: 20px; padding: 10px; font-size: 16px;">
+            </select>
+        </div>
+        <div id="vital-status-pie-chart" style="width: 100%; max-width: 800px; margin: 0 auto;"></div>
+        <div class="story">
+            <p>
+                Ce graphique montre la répartition des statuts vitaux (vivant, décès lié au cancer, ou décès d'autres causes)
+                pour un type de cancer donné. Utilisez le menu déroulant pour sélectionner un type de cancer et voir les
+                données correspondantes. Il permet de mieux comprendre la survie relative selon chaque type de cancer et
+                d’identifier les cancers ayant un pronostic plus ou moins favorable.
+            </p>
+            
+            <h3>Des écarts marqués dans la survie selon le type de cancer</h3>
+            <p>
+                L’analyse des données montre que le taux de survie varie fortement d’un cancer à l’autre. Certains types,
+                comme le mélanome, le cancer du sein et le cancer de la prostate, présentent des taux de survie élevés,
+                tandis que d’autres, comme le cancer du pancréas ou du poumon, ont des taux de mortalité nettement plus élevés.
+            </p>
+            
+            <h3>Une forte survie pour les cancers de la peau, du sein et de la prostate</h3>
+            <p>
+                Les cancers tels que le mélanome, le sein et la prostate affichent des taux de survie supérieurs à 75 %.
+                Cela s’explique par une détection souvent précoce et des traitements efficaces. Par exemple, le mélanome
+                est généralement diagnostiqué à des stades précoces, où la chirurgie permet un traitement curatif. Le cancer
+                du sein bénéficie de campagnes de dépistage efficaces et d’avancées thérapeutiques importantes qui améliorent
+                considérablement les chances de survie.
+            </p>
+            
+            <h3>Un pronostic plus sombre pour les cancers digestifs et pulmonaires</h3>
+            <p>
+                À l’inverse, les cancers du pancréas et du poumon affichent des taux de survie beaucoup plus faibles. Moins de
+                30 % des patients atteints de ces cancers sont encore en vie à long terme. Cela s’explique par des symptômes
+                tardifs entraînant un diagnostic souvent avancé, rendant les traitements moins efficaces.
+            </p>
+            
+            <h3>La part des décès dus à d’autres causes</h3>
+            <p>
+                Une proportion non négligeable de décès concerne des causes non directement liées au cancer diagnostiqué.
+                Cela est particulièrement visible pour les cancers avec une longue espérance de vie, comme la prostate et
+                le sein, où les patients décèdent parfois d’autres maladies liées à l’âge (maladies cardiovasculaires, autres
+                pathologies chroniques).
+            </p>
+            
+            <h3>Conclusion</h3>
+            <p>
+                Ce graphique illustre la diversité des pronostics selon le type de cancer. Certains cancers bénéficient
+                de taux de survie élevés grâce au dépistage précoce et aux avancées thérapeutiques, tandis que d’autres
+                restent difficiles à traiter en raison de diagnostics tardifs. L’amélioration de la prévention et de la
+                détection précoce demeure un levier essentiel pour réduire la mortalité liée aux cancers les plus agressifs.
+            </p>
+        </div>
+    </section>
+    
+</div>
+<div class="container">
+    <section class="chart-container">
+        <h2>Relation entre l'âge et la cause de décès</h2>
+        <div id="age-cod-boxplot"></div>
+        <div class="story">
+            <p>
+                Ce graphique montre la distribution des âges pour chaque cause de décès.
+                Il permet de visualiser les variations d'âge en fonction des différentes causes spécifiques.
+                L’analyse de ces données aide à comprendre à quel âge surviennent principalement les décès liés aux cancers.
+            </p>
+    
+            <h3>Une forte corrélation entre l'âge et certains types de cancer</h3>
+            <p>
+                La majorité des décès liés aux cancers surviennent chez des personnes âgées, avec une médiane située entre
+                65 et 75 ans pour de nombreux types de cancer. Cela confirme que le vieillissement est un facteur de risque
+                majeur dans leur développement. Cette tendance est aussi cohérente avec les premiers graphiques montrant
+                une augmentation du nombre de cas de cancer avec l'âge, ce qui signifie logiquement qu’il y a plus de décès
+                parmi les personnes âgées, simplement parce qu’elles sont plus nombreuses à être touchées.
+            </p>
+    
+            <h3>Les cancers touchant majoritairement les personnes âgées</h3>
+            <p>
+                Les cancers du pancréas, colorectal et de la prostate affectent principalement les seniors, avec une médiane
+                d’âge élevée. Ces cancers sont souvent liés à des facteurs de risque cumulatifs tels que le tabagisme,
+                l'alimentation et l’exposition prolongée à certaines substances.
+            </p>
+    
+            <h3>Le cancer du poumon : une large distribution d'âges</h3>
+            <p>
+                Contrairement aux précédents, le cancer du poumon présente une distribution plus étendue d’âges.
+                Bien qu’il touche principalement les personnes âgées, on observe également des décès à des âges plus jeunes.
+                Cela peut être dû à des facteurs environnementaux, à une exposition précoce au tabac ou à certaines mutations
+                génétiques spécifiques.
+            </p>
+    
+            <h3>Les cancers avec une mortalité plus précoce</h3>
+            <p>
+                Certains cancers comme la leucémie et les mélanomes montrent une répartition des âges plus large,
+                avec une part significative de décès touchant des patients plus jeunes. Cela peut être lié à des formes
+                plus agressives de ces cancers ou à des diagnostics plus tardifs, rendant les traitements moins efficaces.
+            </p>
+    
+            <h3>Conclusion</h3>
+            <p>
+                Ce graphique illustre que la plupart des cancers entraînent des décès à un âge avancé, ce qui est logique
+                puisque les personnes âgées sont les plus touchées par la maladie. Cependant, certains types, comme le
+                cancer du poumon, la leucémie et le mélanome, peuvent également affecter des patients plus jeunes.
+                Ces différences soulignent l'importance du dépistage ciblé et de la prévention en fonction des profils de risque
+                selon l'âge.
+            </p>
+        </div>
+    </section>
+    
+</div>
+<div class="container">
+    <section class="chart-container">
+        <h2>Répartition du statut vital par ethnie</h2>
+        <div id="vital-status-ethnicity-chart"></div>
+        <div class="story">
+            <p>
+                Ce graphique montre la répartition des statuts vitaux (vivant, décès lié au cancer, ou décès d'autres causes) pour chaque
+                groupe ethnique. Il permet de comparer la proportion de survivants et les différences dans les causes de décès.
+            </p>
+    
+            <h3>Une survie globalement homogène</h3>
+            <p>
+                On constate que la proportion de personnes encore en vie après un diagnostic de cancer est relativement
+                similaire entre les différentes ethnies. Cela suggère que, globalement, aucune ethnie n’est significativement
+                plus vulnérable ou immunisée contre les cancers.
+            </p>
+    
+            <h3>Des différences mineures dans les causes de décès</h3>
+            <p>
+                Bien que les taux de survie restent comparables, la répartition des décès par cause varie légèrement.
+                On retrouve, comme dans les graphiques précédents, une présence plus marquée de cancers digestifs
+                (colorectal, pancréas) et pulmonaires dans certaines ethnies, mais sans écart majeur.
+            </p>
+    
+            <h3>Mélanome : l’exception notable</h3>
+            <p>
+                La seule différence nette concerne le mélanome, qui représente une proportion de décès bien plus faible
+                chez les populations asiatiques et noires. Comme déjà observé dans les analyses précédentes,
+                cela est principalement dû à une plus forte pigmentation de la peau, qui protège naturellement des
+                effets des rayons UV.
+            </p>
+    
+            <h3>Un reflet des tendances générales</h3>
+            <p>
+                Ce graphique confirme les tendances observées dans les analyses précédentes : aucune ethnie ne semble
+                significativement plus touchée ou épargnée par les cancers en termes de survie. Les écarts sont minimes,
+                et la plupart des différences s’expliquent par des facteurs environnementaux et des habitudes de vie.
+            </p>
+    
+            <h3>Conclusion</h3>
+            <p>
+                En dehors du cas particulier du mélanome, la répartition des statuts vitaux après un diagnostic de cancer
+                est assez homogène entre les ethnies. Cela renforce l’idée que la prévention et le dépistage doivent être
+                adaptés aux risques spécifiques, mais qu’aucun groupe n’est fondamentalement plus résistant ou vulnérable
+                face aux cancers en général.
+            </p>
+        </div>
+    </section>
+    
+
+    <script>
+        const ageGroupData = {{age_group_data | safe}};
+        const cancerAgeData = {{cancer_age_data | safe}};
+        const lineGraphData = {{line_graph_data | safe}};
+        const lineChartData = {{line_chart_data | safe}};
+        const ethnicityCancerData = {{ethnicity_cancer_data | safe}};
+        const vitalStatusData = {{vital_status_data | safe}};
+        const boxPlotData = {{box_plot_data | safe}};
+        const vitalStatusEthnicityData = {{vital_status_ethnicity_data | safe}};
+    </script>
+    <script src="/static/services/index.js"></script>
+</div>
+<div class="container">
+    <section class="chart-container">
+        <h2>Conclusion générale</h2>
+        <div class="story">
+            <p>
+                L'ensemble des analyses effectuées à travers ces graphiques met en évidence plusieurs tendances majeures sur la répartition et l'évolution des cancers en fonction de l'âge, du sexe, de l'ethnie et des types de cancer.
+            </p>
+
+            <h3>L'âge, un facteur de risque prédominant</h3>
+            <p>
+                Nos analyses ont confirmé que la majorité des cancers surviennent à un âge avancé, avec un pic autour de 60-70 ans. Ce constat est cohérent avec le vieillissement cellulaire et l’accumulation de mutations génétiques au fil du temps. Cependant, certains cancers comme la leucémie ou le mélanome peuvent affecter des patients plus jeunes.
+            </p>
+
+            <h3>Des différences notables selon le sexe</h3>
+            <p>
+                <ul>
+                    <li>Le cancer du sein reste le plus fréquent chez les femmes, particulièrement entre 40 et 80 ans.</li>
+                    <li>Le cancer de la prostate est le plus répandu chez les hommes après 60 ans.</li>
+                    <li>Les cancers du poumon et colorectal montrent une distribution plus équilibrée entre les sexes, bien que certains facteurs de risque (tabac, alcool, alimentation) influencent leur prévalence.</li>
+            </p>
+
+            <h3>Peu de différences significatives entre les ethnies</h3>
+            <p>
+                Contrairement à certaines idées reçues, aucune ethnie ne semble nettement plus vulnérable ou résistante face aux cancers en général. Les différences observées concernent surtout le <strong>mélanome</strong>, beaucoup plus rare chez les populations à peau foncée en raison d’une meilleure protection contre les rayons UV.
+            </p>
+
+            <h3>Le dépistage et la prévention restent des leviers clés</h3>
+            <p>
+                L’évolution de l’âge moyen des patients diagnostiqués pour certains cancers montre une amélioration du dépistage, notamment pour les cancers du sein et de la prostate. Cependant, d’autres cancers comme le colorectal voient une diminution de l’âge moyen de diagnostic, ce qui peut traduire une exposition plus précoce à des facteurs de risque.
+            </p>
+
+            <h3>Un taux de survie relativement homogène</h3>
+            <p>
+                L’analyse des statuts vitaux montre que la proportion de patients en vie après un cancer est relativement stable entre les différentes ethnies et sexes, ce qui souligne l’impact des progrès médicaux sur toutes les populations.
+            </p>
+
+            <h3>Perspectives et enjeux</h3>
+            <p>
+                Ces résultats rappellent l’importance du dépistage précoce, de la prévention ciblée et de l’adaptation des politiques de santé publique en fonction des tendances observées. <strong>Lutter contre les facteurs de risque modifiables</strong> (tabac, alimentation, sédentarité) et <strong>améliorer l'accès aux soins et au dépistage</strong> restent des priorités pour réduire la mortalité liée au cancer.
+            </p>
+        </div>
+    </section>
+</div>
+<footer>
+    © 2025 Projet Data Viz | Tous droits réservés
+</footer>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  version: 3.8,
+  services: {
+    user_management: {
+      build: ./user_management,
+      ports: [
+        8000:8000
+      ]
+    },
+    math_functions: {
+      build: ./math_functions,
+      ports: [
+        8001:8000
+      ]
+    },
+    templates: {
+      build: ./templates,
+      ports: [
+        8002:8000
+      ]
+    },
+    static_files: {
+      build: ./static_files,
+      ports: [
+        8003:8000
+      ]
+    }
+  }
+}
